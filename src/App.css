@@ -1,0 +1,114 @@
+/* Neobrutalist Design Overrides */
+.neo-border {
+  border: 4px solid #000 !important;
+  box-shadow: 8px 8px 0px 0px #000;
+}
+
+.neo-button {
+  border: 4px solid #000 !important;
+  box-shadow: 4px 4px 0px 0px #000;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+
+.neo-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000;
+}
+
+.neo-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+/* Custom scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thumb-yellow-400::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thumb-yellow-400::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border: 2px solid #000;
+}
+
+.scrollbar-thumb-yellow-400::-webkit-scrollbar-thumb {
+  background: #fbbf24;
+  border: 2px solid #000;
+  border-radius: 0;
+}
+
+.scrollbar-thumb-yellow-400::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Audio visualization */
+@keyframes audio-pulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.5); }
+}
+
+.audio-bar {
+  animation: audio-pulse 0.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+/* High contrast text */
+.high-contrast {
+  color: #000 !important;
+  text-shadow: 2px 2px 0px #fff;
+}
+
+/* Card shadows */
+.neo-card {
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px 0px #000;
+  border-radius: 0 !important;
+}
+
+/* Interview specific styles */
+.interview-transcript {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #fbbf24 #f1f1f1;
+}
+
+.speaking-indicator {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .neo-border {
+    box-shadow: 4px 4px 0px 0px #000;
+  }
+  
+  .neo-button {
+    box-shadow: 2px 2px 0px 0px #000;
+  }
+}
