@@ -12,8 +12,7 @@ interface UseInterviewStreamProps {
 
 export function useInterviewStream({
   apiKeys,
-  onTranscriptReceived,
-  onInterviewerResponse
+  onTranscriptReceived
 }: UseInterviewStreamProps) {
   const [isConnected, setIsConnected] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +23,6 @@ export function useInterviewStream({
 
   const wsRef = useRef<WebSocket | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
 
   const startRecording = useCallback(async () => {
     try {

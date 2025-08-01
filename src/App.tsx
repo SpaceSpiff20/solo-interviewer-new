@@ -29,24 +29,26 @@ export interface FeedbackData {
   }>;
 }
 
+export interface ConversationEntry {
+  speaker: 'interviewer' | 'candidate';
+  message: string;
+  timestamp: Date;
+}
+
 export type AppState = 'setup' | 'interviewing' | 'feedback';
 
 function App() {
   const [appState, setAppState] = useState<AppState>('setup');
   const [interviewData, setInterviewData] = useState<InterviewData | null>(null);
   const [feedbackData, setFeedbackData] = useState<FeedbackData | null>(null);
-  const [conversationHistory, setConversationHistory] = useState<Array<{
-    speaker: 'interviewer' | 'candidate';
-    message: string;
-    timestamp: Date;
-  }>>([]);
+  const [conversationHistory, setConversationHistory] = useState<ConversationEntry[]>([]);
 
   const handleSetupComplete = (data: InterviewData) => {
     setInterviewData(data);
     setAppState('interviewing');
   };
 
-  const handleInterviewComplete = (feedback: FeedbackData, history: typeof conversationHistory) => {
+  const handleInterviewComplete = (feedback: FeedbackData, history: ConversationEntry[]) => {
     setFeedbackData(feedback);
     setConversationHistory(history);
     setAppState('feedback');

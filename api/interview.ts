@@ -2,11 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 interface RequestBody {
   transcript: string;
-  conversationHistory: Array<{
-    speaker: 'interviewer' | 'candidate';
-    message: string;
-    timestamp: string;
-  }>;
+  conversationHistory: ConversationEntry[];
   jobDescription: string;
   resume: string;
   coverLetter?: string;
@@ -15,6 +11,12 @@ interface RequestBody {
     speechify: string;
     openai: string;
   };
+}
+
+interface ConversationEntry {
+  speaker: 'interviewer' | 'candidate';
+  message: string;
+  timestamp: string;
 }
 
 interface FeedbackData {
@@ -155,7 +157,7 @@ async function generateFeedback({
   coverLetter,
   apiKey
 }: {
-  conversationHistory: RequestBody['conversationHistory'];
+  conversationHistory: ConversationEntry[];
   jobDescription: string;
   resume: string;
   coverLetter?: string;

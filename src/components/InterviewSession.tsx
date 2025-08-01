@@ -2,27 +2,21 @@ import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Mic, MicOff, Volume2, VolumeX, Square, Play } from 'lucide-react';
-import { InterviewData, FeedbackData } from '@/App';
+import { Mic, MicOff, Volume2, VolumeX, Square } from 'lucide-react';
+import { InterviewData, FeedbackData, ConversationEntry } from '@/App';
 import { useInterviewStream } from '@/hooks/useInterviewStream';
 import { useToast } from '@/hooks/use-toast';
 
 interface InterviewSessionProps {
   interviewData: InterviewData;
-  onComplete: (feedback: FeedbackData, history: ConversationHistory) => void;
-}
-
-interface ConversationHistory {
-  speaker: 'interviewer' | 'candidate';
-  message: string;
-  timestamp: Date;
+  onComplete: (feedback: FeedbackData, history: ConversationEntry[]) => void;
 }
 
 export function InterviewSession({ interviewData, onComplete }: InterviewSessionProps) {
   const [isRecording, setIsRecording] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [sessionStatus, setSessionStatus] = useState<'starting' | 'active' | 'ending'>('starting');
-  const [conversationHistory, setConversationHistory] = useState<ConversationHistory[]>([]);
+  const [conversationHistory, setConversationHistory] = useState<ConversationEntry[]>([]);
   const [currentTranscript, setCurrentTranscript] = useState('');
   const [isInterviewerSpeaking, setIsInterviewerSpeaking] = useState(false);
   
@@ -35,9 +29,7 @@ export function InterviewSession({ interviewData, onComplete }: InterviewSession
     isConnected,
     error,
     partialTranscript,
-    finalTranscript,
-    isSpeaking,
-    endpointReached
+    finalTranscript
   } = useInterviewStream({
     apiKeys: interviewData.apiKeys,
     onTranscriptReceived: handleTranscriptReceived,

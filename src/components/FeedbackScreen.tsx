@@ -3,15 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { TrendingUp, AlertTriangle, RotateCcw, Download, Clock } from 'lucide-react';
-import { FeedbackData } from '@/App';
+import { FeedbackData, ConversationEntry } from '@/App';
 
 interface FeedbackScreenProps {
   feedbackData: FeedbackData;
-  conversationHistory: Array<{
-    speaker: 'interviewer' | 'candidate';
-    message: string;
-    timestamp: Date;
-  }>;
+  conversationHistory: ConversationEntry[];
   onRestart: () => void;
 }
 
