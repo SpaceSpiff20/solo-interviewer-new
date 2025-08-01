@@ -1,7 +1,6 @@
 {
   "functions": {
     "api/interview.ts": {
-      "runtime": "edge"
     }
   },
   "regions": ["iad1"]
