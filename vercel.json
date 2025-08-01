@@ -1,6 +1,7 @@
 {
   "functions": {
     "api/interview.ts": {
+      "runtime": "banana"
     }
   },
   "regions": ["iad1"]
