@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/interview.ts": {
-      "runtime": "nodejs@22.x"
+      "runtime": "vercel/node@20.x"
     }
   },
   "regions": ["iad1"]
