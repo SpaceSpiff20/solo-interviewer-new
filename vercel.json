@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/interview.ts": {
-      "runtime": "vercel/node@20.x"
+      "runtime": "edge"
     }
   },
   "regions": ["iad1"]
